@@ -1,16 +1,33 @@
-# animated_hidden_drawer_example
+# animated_hidden_drawer
 
-Demonstrates how to use the animated_hidden_drawer plugin.
+**Build attractive UI in less time and easily with the help of this plugin**.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+### Demo
 
-A few resources to get you started if this is your first Flutter project:
+<img src="drawer_demo.gif"  height ="500" >
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+```
+HiddenDrawer(items:[# widgets with gesture detector])
+```
+
+**1. you must use any kind of gesturedetector or buttons in order to perform any actions on tappig the list tile in drawer**
+
+**2. suggested way: use'HiddenDrawer' in body of scaffold**
+
+#### Suggestions and feedback
+
+![Github]("https://github.com/krish-dev-7")
+
+![Insta]("https://instagram.com/krish_krush")
+
+This project is a starting point for a Flutter
+[plug-in package](https://flutter.dev/developing-packages/),
+a specialized package that includes platform-specific implementation code for
+Android and/or iOS.
 
 For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
