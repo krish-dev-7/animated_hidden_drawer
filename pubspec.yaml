@@ -1,8 +1,7 @@
 name: animated_hidden_drawer
-description: A new Flutter plugin.
+description: The flutter plugin Used to build attractive UI by using animated hidden drawer.This is drawer is higly customisable.You can add Items with any kind of usable widgets with gesture detections in order to provide navigation among different screens, kindly check the example for implementation.kindly give feedback to my mail id or to given instagram id.
 version: 0.0.1
-author: Krishna Sundar
-homepage:
+homepage: https://github.com/krish-dev-7/animated_hidden_drawer
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
