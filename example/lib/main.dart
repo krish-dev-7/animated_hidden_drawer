@@ -13,6 +13,8 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   // Platform messages are asynchronous, so we initialize in an async method.
+  /// For screen navigation using this plugin, there is an awesome way.
+  /// that's --> step 1. create a widget with startup page.
   Widget selectedWidget = Container(
       decoration: BoxDecoration(borderRadius: BorderRadius.circular(80)),
       height: 665,
@@ -27,6 +29,7 @@ class _MyAppState extends State<MyApp> {
           body: HiddenDrawer(
         duration: Duration(milliseconds: 500),
         items: [
+          /// step 2. Create gesture detectors of items
           GestureDetector(
             child: Row(
               children: [
@@ -45,6 +48,7 @@ class _MyAppState extends State<MyApp> {
               ],
             ),
             onTap: () {
+              /// step 3. on pressed the item , update the widget.
               setState(() {
                 selectedWidget = Container(
                     decoration: BoxDecoration(
@@ -124,6 +128,8 @@ class _MyAppState extends State<MyApp> {
         drawerBackgroundColor: Color(0xffb7b7a4),
         borderRadius: 80,
         header: Container(
+          /// This highly Customisable widget is used
+          /// as a header for our attractive drawer
           height: 250,
           width: 1000,
           color: Color(0xff6b705c),

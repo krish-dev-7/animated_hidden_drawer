@@ -1,25 +1,54 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
-class FlutterPlugin {
-  static const MethodChannel _channel = const MethodChannel('flutter_plugin');
-
-  static Future<String> get platformVersion async {
-    final String version = await _channel.invokeMethod('getPlatformVersion');
-    return version;
-  }
-}
-
-Widget defaultHeader = Container();
+/// As I build this plugin from scratch,
+///
+/// i didn't used any other plugin :)
+// class FlutterPlugin {
+//   static const MethodChannel _channel = const MethodChannel('flutter_plugin');
+//
+//   static Future<String> get platformVersion async {
+//     final String version = await _channel.invokeMethod('getPlatformVersion');
+//     return version;
+//   }
+// }
 
 class HiddenDrawer extends StatefulWidget {
   final List<Widget> items;
+
+  /// add list of widgets with Gesture detector with changeable screens
+  ///
+  /// **must required**
   final Color drawerBackgroundColor;
+
+  /// drawer background color
+  ///
+  /// optional
+
   final Color drawerColor;
+
+  /// drawer icon color
+  ///
+  /// optional
   final Color backgroundColor;
+
+  /// this gives the background colour
+  ///
+  /// for the app bar and bottom bar
+  ///
   final Color dividerColor;
+
+  /// colour for divider
+  ///
+  /// actually this is a container
+  ///
+  /// optional
   final double dividerDensity;
+
+  /// it is the width of the divider
+  ///
+  /// which is height of the container
+  ///
+  /// **optional**
   final double dividerLength;
   final double x;
   final double rotateX;
@@ -31,6 +60,10 @@ class HiddenDrawer extends StatefulWidget {
   final double z;
   final double borderRadius;
   final Widget child;
+
+  /// this child takes Widget and provides the screen for our app
+  /// ...
+  ///
   const HiddenDrawer({
     Key key,
     @required this.items,
@@ -41,6 +74,8 @@ class HiddenDrawer extends StatefulWidget {
     @required this.child,
     this.drawerBackgroundColor,
     this.backgroundColor,
+
+    /// Below fields with default values
     this.x = 200,
     this.y = 200,
     this.scale = 0.7,
@@ -85,6 +120,9 @@ class _HiddenDrawerState extends State<HiddenDrawer> {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: ListView.builder(
+                      /// This provides the list view
+                      /// ... xD
+                      /// among the given list of widget items
                       shrinkWrap: true,
                       itemCount: widget.items.length,
                       itemBuilder: (ctx, index) {
@@ -93,6 +131,7 @@ class _HiddenDrawerState extends State<HiddenDrawer> {
                           children: [
                             GestureDetector(child: widget.items[index]),
                             Container(
+                              /// This container acts as a divider line
                               color: widget.dividerColor,
                               height: widget.dividerDensity,
                               width: widget.dividerLength,
@@ -113,6 +152,9 @@ class _HiddenDrawerState extends State<HiddenDrawer> {
         ),
         GestureDetector(
           onPanUpdate: (data) {
+            /// This gesture detection is for
+            /// ...f
+            /// showing the drawer items when we swipe
             if (data.delta.dx > 0 && data.delta.dy < 0) {
               setState(() {
                 xOffset = widget.x;
@@ -139,6 +181,9 @@ class _HiddenDrawerState extends State<HiddenDrawer> {
             }
           },
           child: AnimatedContainer(
+            /// this class plays vital role for this animation
+            /// :) xD
+            /// yup
             duration: widget.duration,
             transform: Matrix4.translationValues(xOffset, yOffset, zOffset)
               ..scale(scaleFactor)
@@ -162,12 +207,25 @@ class _HiddenDrawerState extends State<HiddenDrawer> {
                   child: Align(
                     alignment: Alignment.topLeft,
                     child: isDOpen
+
+                        /// If Drawer opened then icons is open_in_full
+                        /// ...
+                        /// or else menu_outlined for classification
+                        /// ...
+                        ///this bool plays vital role to check for condition for
+                        /// whether the drawer
+                        /// is opened
+                        /// or not
                         ? IconButton(
                             icon: Icon(
                               Icons.open_in_full,
                               color: widget.drawerColor,
                             ),
                             onPressed: () {
+                              /// if drawer opened ,then on next press
+                              /// ...
+                              /// we should resize accordingly
+                              /// ...
                               setState(() {
                                 xOffset = 0;
                                 yOffset = 0;
@@ -182,6 +240,11 @@ class _HiddenDrawerState extends State<HiddenDrawer> {
                         : IconButton(
                             icon: Icon(Icons.menu_outlined),
                             onPressed: () {
+                              /// if drawer not opened ,then on next press
+                              /// ...
+                              /// we should resize accordingly
+                              /// ...
+                              /// this gives attraction
                               setState(() {
                                 xOffset = widget.x;
                                 yOffset = widget.y;
